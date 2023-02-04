@@ -8,15 +8,25 @@
 </head>
 <body>
      <div style="padding: 30px;">
+        <h1 style="font-size: 20px;">División de números</h1>
         <form action="" method="post">
-            <p>
-                <input name="dividendo" type="number" min="0" value="<?php echo isset($_POST["dividendo"]) ? $_POST["dividendo"] : ""; ?>" required >
-                /
-                <input  name="divisor" type="number" min="1" value="<?php echo isset($_POST["divisor"]) ? $_POST["divisor"] : ""; ?>" required >
-                <?php echo (isset($_POST["dividendo"]) AND isset($_POST["divisor"])) ? " = " . ($_POST["dividendo"] / $_POST["divisor"]) : ""; ?>
-            </p>
+            <label for="dividend">
+                <input id="dividend" name="dividend" type="number" min="0" value="<?php echo isset($_POST["dividend"]) ? $_POST["dividend"] : ""; ?>" required >
+            </label>
+            /
+            <label for="divider">
+                <input id="divider" name="divider" type="number" min="1" value="<?php echo isset($_POST["divider"]) ? $_POST["divider"] : ""; ?>" required >
+            </label>
 
-            <input  type="submit" value="Dividir">
+            <?php 
+                if (isset($_POST["dividend"]) AND isset($_POST["divider"])) { /** Comprobar existencia de parametros. */
+                    echo " = " . ($_POST["dividend"] / $_POST["divider"]); /** Division de numeros y escritura del resutado. */
+                }
+            ?>
+
+            <div style="padding-top: 20px;">
+                <input type="submit" value="Dividir">
+            </div>
         </form>
      </div>
 </body>
